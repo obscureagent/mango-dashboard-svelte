@@ -5,9 +5,13 @@ export default defineConfig({
 	plugins: [svelte()],
 	server: {
 		port: 5173,
-		host: '0.0.0.0'
-	},
-	ssr: {
-		noExternal: ['@sveltejs/vite-plugin-svelte']
+		host: '0.0.0.0',
+		proxy: {
+			'/mock': {
+				target: 'http://127.0.0.1:5174',
+				changeOrigin: true,
+				rewrite: (path) => path
+			}
+		}
 	}
 });

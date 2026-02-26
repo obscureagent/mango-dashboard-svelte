@@ -36,7 +36,7 @@ function createServerStore() {
 		subscribe,
 		fetchServers: async () => {
 			if (!token) return;
-			const response = await fetch('/site/mango-dashboard/mock/servers', {
+			const response = await fetch('/mock/servers', {
 				headers: { Authorization: `Bearer ${token}` }
 			});
 			const servers = await response.json();
@@ -44,14 +44,14 @@ function createServerStore() {
 		},
 		getServer: async (id: string): Promise<Server | null> => {
 			if (!token) return null;
-			const response = await fetch(`/site/mango-dashboard/mock/servers/${id}`, {
+			const response = await fetch(`/mock/servers/${id}`, {
 				headers: { Authorization: `Bearer ${token}` }
 			});
 			return await response.json();
 		},
 		createServer: async (data: Partial<Server>) => {
 			if (!token) return;
-			const response = await fetch('/site/mango-dashboard/mock/servers', {
+			const response = await fetch('/mock/servers', {
 				method: 'POST',
 				headers: {
 					Authorization: `Bearer ${token}`,
@@ -64,7 +64,7 @@ function createServerStore() {
 		},
 		startServer: async (id: string) => {
 			if (!token) return;
-			await fetch(`/site/mango-dashboard/mock/servers/${id}/start`, {
+			await fetch(`/mock/servers/${id}/start`, {
 				method: 'POST',
 				headers: { Authorization: `Bearer ${token}` }
 			});
@@ -74,7 +74,7 @@ function createServerStore() {
 		},
 		stopServer: async (id: string) => {
 			if (!token) return;
-			await fetch(`/site/mango-dashboard/mock/servers/${id}/stop`, {
+			await fetch(`/mock/servers/${id}/stop`, {
 				method: 'POST',
 				headers: { Authorization: `Bearer ${token}` }
 			});
@@ -84,7 +84,7 @@ function createServerStore() {
 		},
 		restartServer: async (id: string) => {
 			if (!token) return;
-			await fetch(`/site/mango-dashboard/mock/servers/${id}/restart`, {
+			await fetch(`/mock/servers/${id}/restart`, {
 				method: 'POST',
 				headers: { Authorization: `Bearer ${token}` }
 			});
@@ -94,7 +94,7 @@ function createServerStore() {
 		},
 		deleteServer: async (id: string) => {
 			if (!token) return;
-			await fetch(`/site/mango-dashboard/mock/servers/${id}`, {
+			await fetch(`/mock/servers/${id}`, {
 				method: 'DELETE',
 				headers: { Authorization: `Bearer ${token}` }
 			});
